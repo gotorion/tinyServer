@@ -14,6 +14,8 @@ Socket::Socket() {
 
 Socket::Socket(int fd) : sockfd_(fd) {}
 
-Socket::~Socket() { ::close(sockfd_); }
+Socket::~Socket() {
+  ::close(sockfd_);
+}
 
-} // namespace TinyServer::Net
+}  // namespace TinyServer::Net

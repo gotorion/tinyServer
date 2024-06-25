@@ -2,14 +2,14 @@
 #define _SOCKET_H_
 namespace TinyServer::Net {
 class Socket {
-public:
+ public:
   explicit Socket();
   explicit Socket(int fd);
   ~Socket();
 
-private:
+ private:
   int sockfd_;
 };
 
-} // namespace TinyServer::Net
+}  // namespace TinyServer::Net
 #endif
