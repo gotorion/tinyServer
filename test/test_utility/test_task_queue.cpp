@@ -5,7 +5,7 @@ using TinyServer::Utility::Task;
 using TinyServer::Utility::TaskQueue;
 
 TEST(TestTaskQueue, PushTask) {
-  TaskQueue queue;
+  TaskQueue queue(10);
   auto task = [&]() -> void {
   };
   queue.PushTask(task);
