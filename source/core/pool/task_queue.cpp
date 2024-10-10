@@ -1,16 +1,12 @@
 #include "task_queue.h"
-#include <iostream>
-namespace TinyServer::Utility {
+namespace server::pool {
 
 TaskQueue::TaskQueue(std::size_t queueSize) : size_(queueSize), taskQueue_() {
-  std::cout << "size_ = " << size_ << std::endl;
 }
 
 void TaskQueue::PushTask(Task&& task) {
   std::unique_lock lock(mutex_);
-  std::cout << size_ << " " << taskQueue_.size() << std::endl;
   while (Full()) {
-    std::cout << "Full wait" << std::endl;
     notFull_.wait(lock);
   }
   taskQueue_.push(task);
@@ -46,4 +42,4 @@ bool TaskQueue::Full() {
   return taskQueue_.size() == size_;
 }
 
-}  // namespace TinyServer::Utility
+}  // namespace server::pool

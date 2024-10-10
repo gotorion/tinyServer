@@ -1,13 +1,13 @@
-set(LIBRARY_NAME net)
+set(LIBRARY_NAME core)
 
 message("------ Target: ${LIBRARY_NAME}")
 
 file(GLOB ${LIBRARY_NAME}_SRC CONFIGURE_DEPENDS
-    ${CMAKE_CURRENT_SOURCE_DIR}/source/*.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/pool/*.cpp
 )
 
 set(PUBLIC_INCLUDE_DIR 
-    ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/pool
 )
 
 add_library(${LIBRARY_NAME} SHARED ${${LIBRARY_NAME}_SRC})

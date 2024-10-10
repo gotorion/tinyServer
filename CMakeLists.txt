@@ -1,8 +1,16 @@
 cmake_minimum_required(VERSION 3.20)
-project(tinyServer)
+set(PROJECT_NAME tiny_server)
+project(
+    ${PROJECT_NAME}
+    LANGUAGES C CXX
+)
 
-set(CMAKE_CXX_STANDARD 17)
+include(${CMAKE_SOURCE_DIR}/cmake/utils.cmake)
+
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_CXX_FLAGS "-g")
 # add gtest
 include(FetchContent)
 FetchContent_Declare(
@@ -14,4 +22,3 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
 add_subdirectory(source)
-add_subdirectory(test)

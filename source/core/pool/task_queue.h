@@ -6,7 +6,7 @@
 #include <optional>
 #include <queue>
 
-namespace TinyServer::Utility {
+namespace server::pool {
 
 using Task = std::function<void()>;
 
@@ -32,5 +32,5 @@ class TaskQueue {
   bool isExit_{false};
 };
 
-}  // namespace TinyServer::Utility
+}  // namespace server::pool
 #endif

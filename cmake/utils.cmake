@@ -1,0 +1,15 @@
+macro(add_test_pack TESTNAME)
+    set(opt)
+    set(one)
+    set(mulValue SRC LIBS INCLUDE_DIR LINK_DIR)
+    cmake_parse_arguments(TEST "${opt}" "${one}" "${mulValue}" ${ARGN})
+    # coverage
+    set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage)
+    set(CMAKE_C_FLAGS ${CMAKE_C_FLAGS} -fprofile-arcs -ftest-coverage)
+    set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS} -fprofile-arcs -ftest-coverage)
+    
+    add_executable(${TESTNAME} ${TEST_SRC})
+    target_include_directories(${TESTNAME} PUBLIC ${TEST_INCLUDE_DIR})
+    target_link_directories(${TESTNAME} PRIVATE ${TEST_LINK_DIR})
+    target_link_libraries(${TESTNAME} gtest gmock gtest_main ${TEST_LIBS})
+endmacro()

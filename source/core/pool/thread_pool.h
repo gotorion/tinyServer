@@ -3,7 +3,7 @@
 #include <thread>
 #include <vector>
 #include "task_queue.h"
-namespace TinyServer::Utility {
+namespace server::pool {
 class ThreadPool {
  public:
   ThreadPool(std::size_t threadNum, std::size_t queueSize);
@@ -22,6 +22,6 @@ class ThreadPool {
   bool isExit_;
 };
 
-}  // namespace TinyServer::Utility
+}  // namespace server::pool
 
 #endif

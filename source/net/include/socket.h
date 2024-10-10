@@ -1,15 +1,19 @@
 #ifndef _SOCKET_H_
 #define _SOCKET_H_
-namespace TinyServer::Net {
+#include <string>
+namespace tiny::server::net {
 class Socket {
  public:
   explicit Socket();
   explicit Socket(int fd);
-  ~Socket();
+  virtual ~Socket();
+
+ public:
+  int get_fd() const;
 
  private:
-  int sockfd_;
+  int fd_{};
 };
 
-}  // namespace TinyServer::Net
+}  // namespace tiny::server::net
 #endif

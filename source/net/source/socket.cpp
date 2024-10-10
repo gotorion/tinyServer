@@ -4,18 +4,22 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-namespace TinyServer::Net {
+namespace tiny::server::net {
 Socket::Socket() {
-  sockfd_ = ::socket(AF_INET, SOCK_STREAM, 0);
-  if (sockfd_ < 0) {
+  fd_ = ::socket(AF_INET, SOCK_STREAM, 0);
+  if (fd_ < 0) {
     ::perror("Socket error");
   }
 }
 
-Socket::Socket(int fd) : sockfd_(fd) {}
+Socket::Socket(int fd) : fd_(fd) {}
 
 Socket::~Socket() {
-  ::close(sockfd_);
+  ::close(fd_);
 }
 
-}  // namespace TinyServer::Net
+int Socket::get_fd() const {
+  return fd_;
+}
+
+}  // namespace tiny::server::net

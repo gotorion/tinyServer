@@ -1,5 +1,5 @@
 #include "thread_pool.h"
-namespace TinyServer::Utility {
+namespace server::pool {
 
 ThreadPool::ThreadPool(std::size_t threadNum, std::size_t queueSize)
     : threads_(), taskQueue_(TaskQueue(queueSize)), isExit_{false} {
@@ -40,4 +40,4 @@ void ThreadPool::Stop() {
   }
 }
 
-}  // namespace TinyServer::Utility
+}  // namespace server::pool
